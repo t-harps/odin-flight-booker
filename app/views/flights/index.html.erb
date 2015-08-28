@@ -1,0 +1,17 @@
+<h1>Flights#index</h1>
+<%= form_tag(root_path, method: "get") do %>
+  <%= hidden_field_tag :search %>
+  From: 		  <%= select_tag(:departure_airport_id, options_for_select(@airports)) %>
+  To:  			  <%= select_tag(:destination_airport_id, options_for_select(@airports)) %>
+  Date: 		  <%= select_tag(:date, options_for_select(@dates)) %>
+  No. Passengers: <%= select_tag(:num_passengers, options_for_select(@num_passengers)) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<% if params[:search] && !@flights.empty? %>
+  <%= form_tag(new_booking_path, method: "get") do %>
+    <%= render @flights %>
+    <%= hidden_field_tag :num_passengers, params[:num_passengers] %>
+    <%= submit_tag "Select this flight" %>
+  <% end %>
+<% end %>
