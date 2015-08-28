@@ -1,2 +1,20 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/new.html.erb</p>
+<h1>Passenger Information</h1>
+
+<%= "Purchasing tickets for #{pluralize(@num_passengers, "passenger")}" %><br />
+<%= "Flight ##{@flight.id} from #{@flight.departure_airport.code} to #{@flight.destination_airport.code} on #{@flight.date.to_date}" %>
+<hr />
+<%= form_for @booking do |f| %>
+  
+  <%= f.hidden_field :flight_id, value: @flight.id %>
+
+  <%= "Please enter the following information:" %><br />
+
+  <%= f.fields_for :passengers do |passenger_form| %>
+    Name: <%= passenger_form.text_field :name %>
+    Email: <%= passenger_form.text_field :email %>
+    <br />
+  <% end %>
+  
+  <%= f.submit %>
+	
+<% end %>

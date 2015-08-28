@@ -1,0 +1,11 @@
+<%= "Flight: #{@flight.id}
+     from #{@flight.departure_airport.code} to #{@flight.destination_airport.code}
+     on #{@flight.date.to_date}" %><br />
+<%= "Number of Bookings: #{@flight.bookings.count}"%><br />
+<% @flight.bookings.each do |booking| %>
+  <%= "Booking #{booking.id}: " %><br>
+  <% booking.passengers.each_with_index do |passenger, i| %>
+    <%= "Passenger #{i+1}: #{passenger.name} <#{passenger.email}>" %><br>
+  <% end %>
+  <br>
+<% end %>

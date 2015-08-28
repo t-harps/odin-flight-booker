@@ -7,6 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Airport.delete_all
 Flight.delete_all
+Booking.delete_all
+Passenger.delete_all
+
 #Airport
 Airport.create!(code: "SFO") #1
 Airport.create!(code: "NYC") #2
@@ -46,3 +49,14 @@ Flight.create!(date: date5 ,
 	           duration: 240,
 	           departure_airport_id: 4,
 	           destination_airport_id: 3)
+
+Booking.create!(flight_id: 1)
+Booking.create!(flight_id: 2)
+Passenger.create!(name: "Tom", email: "tom@email.com", booking_id: 1)
+Passenger.create!(name: "Jack", email: "jack@email.com", booking_id: 1)
+Passenger.create!(name: "Jim", email: "jim@email.com", booking_id: 2)
+
+
+
+
+
